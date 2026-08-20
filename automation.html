@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Veya | Lead Follow-up Automation</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f7f4ee;
+            --paper: #fcfaf6;
+            --ink: #292724;
+            --muted: #706b63;
+            --line: #dcd6cc;
+            --accent: #5c7380;
+            --soft: #e9e5dd;
+            --white: #ffffff;
+            --green: #657a68;
+            --brown: #8c7164;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            height: 88px;
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid var(--line);
+
+            background: var(--paper);
+        }
+
+        .logo {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 28px;
+            letter-spacing: 8px;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: var(--muted);
+            transition: 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--ink);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 100px 30px 70px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 3px;
+
+            color: var(--accent);
+
+            text-transform: uppercase;
+
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            max-width: 850px;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(44px, 6vw, 76px);
+
+            font-weight: 400;
+
+            line-height: 1.02;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 28px;
+        }
+
+        .hero-text {
+            max-width: 700px;
+
+            font-size: 18px;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           WORKFLOW SECTION
+        ========================= */
+
+        .workflow-section {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 30px;
+        }
+
+        .section-label {
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: var(--accent);
+
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 42px;
+
+            font-weight: 400;
+
+            margin-bottom: 50px;
+        }
+
+        .workflow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /* =========================
+           WORKFLOW STEP
+        ========================= */
+
+        .step {
+            width: min(760px, 100%);
+
+            background: var(--paper);
+
+            border: 1px solid var(--line);
+
+            padding: 30px 34px;
+
+            position: relative;
+
+            transition: 0.25s;
+        }
+
+        .step:hover {
+            border-color: #bdb5a9;
+
+            transform: translateY(-2px);
+        }
+
+        .step-number {
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            color: var(--accent);
+
+            margin-bottom: 8px;
+        }
+
+        .step h3 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 27px;
+
+            font-weight: 400;
+
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+        .data {
+            display: inline-block;
+
+            margin-top: 16px;
+
+            padding: 9px 13px;
+
+            background: var(--soft);
+
+            font-size: 12px;
+
+            color: #514c45;
+        }
+
+
+        /* =========================
+           ARROWS
+        ========================= */
+
+        .arrow {
+            font-size: 28px;
+
+            color: var(--accent);
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =========================
+           VALIDATION DECISION
+        ========================= */
+
+        .decision {
+            width: min(760px, 100%);
+
+            margin: 5px 0;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+        }
+
+        .decision-card {
+            padding: 24px;
+
+            border: 1px solid var(--line);
+
+            background: var(--paper);
+        }
+
+        .decision-card.valid {
+            border-top: 3px solid var(--green);
+        }
+
+        .decision-card.recovery {
+            border-top: 3px solid var(--brown);
+        }
+
+        .decision-card span {
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        .decision-card h4 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 21px;
+
+            font-weight: 400;
+
+            margin: 8px 0;
+        }
+
+        .decision-card p {
+            font-size: 14px;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           BOOKING OUTCOMES
+        ========================= */
+
+        .outcomes {
+            width: min(760px, 100%);
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+
+            margin-top: 5px;
+        }
+
+        .outcome {
+            background: var(--soft);
+
+            padding: 25px;
+
+            border: 1px solid var(--line);
+        }
+
+        .outcome h4 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 22px;
+
+            font-weight: 400;
+
+            margin-bottom: 7px;
+        }
+
+        .outcome p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           EXPLANATION SECTION
+        ========================= */
+
+        .explanation-section {
+            background: var(--paper);
+
+            border-top: 1px solid var(--line);
+
+            border-bottom: 1px solid var(--line);
+
+            margin-top: 110px;
+
+            padding: 100px 30px;
+        }
+
+        .explanation-inner {
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .explanation-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .explanation-card {
+            border: 1px solid var(--line);
+
+            padding: 27px;
+
+            min-height: 220px;
+
+            background: var(--paper);
+
+            transition: 0.2s;
+        }
+
+        .explanation-card:hover {
+            transform: translateY(-3px);
+
+            border-color: #bdb5a9;
+        }
+
+        .explanation-card .num {
+            font-size: 12px;
+
+            color: var(--accent);
+
+            letter-spacing: 2px;
+        }
+
+        .explanation-card h3 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-weight: 400;
+
+            font-size: 24px;
+
+            margin: 18px 0 10px;
+        }
+
+        .explanation-card p {
+            font-size: 14px;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           STACK SECTION
+        ========================= */
+
+        .stack-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 100px 30px;
+        }
+
+        .stack-box {
+            border: 1px solid var(--line);
+
+            background: var(--paper);
+
+            padding: 42px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 40px;
+        }
+
+        .stack-title {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 34px;
+
+            font-weight: 400;
+        }
+
+        .stack-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            justify-content: flex-end;
+        }
+
+        .stack-item {
+            padding: 12px 17px;
+
+            border: 1px solid var(--line);
+
+            background: var(--cream);
+
+            font-size: 13px;
+        }
+
+        .stack-description {
+            max-width: 760px;
+
+            margin-top: 25px;
+
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           DESIGN PRINCIPLE
+        ========================= */
+
+        .principle {
+            background: #30302d;
+
+            color: #f8f5ef;
+
+            padding: 110px 30px;
+
+            text-align: center;
+        }
+
+        .principle-inner {
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+        .principle-label {
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            opacity: 0.65;
+
+            margin-bottom: 25px;
+        }
+
+        .principle h2 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(38px, 5vw, 62px);
+
+            font-weight: 400;
+
+            line-height: 1.1;
+
+            margin-bottom: 25px;
+        }
+
+        .principle p {
+            max-width: 600px;
+
+            margin: auto;
+
+            color: #c9c5bd;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 7%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            border-top: 1px solid #44433f;
+
+            background: #30302d;
+
+            color: #c9c5bd;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                height: 75px;
+
+                padding: 0 25px;
+            }
+
+            .logo {
+                font-size: 23px;
+
+                letter-spacing: 6px;
+            }
+
+            .hero {
+                padding: 70px 25px 55px;
+            }
+
+            h1 {
+                font-size: 48px;
+
+                letter-spacing: -1px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .workflow-section {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+
+            .step {
+                padding: 25px;
+            }
+
+            .decision,
+            .outcomes {
+                grid-template-columns: 1fr;
+            }
+
+            .explanation-section {
+                padding: 75px 25px;
+            }
+
+            .explanation-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stack-section {
+                padding: 75px 25px;
+            }
+
+            .stack-box {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .stack-list {
+                justify-content: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 10px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .explanation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .step h3 {
+                font-size: 24px;
+            }
+
+            .stack-title {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <a href="index.html" class="logo">
+        VEYA
+    </a>
+
+    <a href="index.html" class="back-link">
+        ← Explore Veya
+    </a>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="eyebrow">
+        AI Solutions Engineer · Task 03
+    </div>
+
+    <h1>
+        A calm, reliable journey from enquiry to consultation.
+    </h1>
+
+    <p class="hero-text">
+        The workflow captures every consultation lead, gives the team
+        immediate visibility, keeps follow-up personal, and provides
+        a clear recovery path if any automation step fails.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     WORKFLOW
+========================= -->
+
+<section class="workflow-section">
+
+    <div class="section-label">
+        Lead automation workflow
+    </div>
+
+    <h2 class="section-title">
+        From form submission to booked consultation.
+    </h2>
+
+
+    <div class="workflow">
+
+
+        <!-- 01 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                01 · TRIGGER
+            </div>
+
+            <h3>
+                Free Skin Confidence Consultation Form
+            </h3>
+
+            <p>
+                The landing page collects the minimum information
+                required to understand and respond to the enquiry.
+            </p>
+
+            <div class="data">
+                Name · Email · Phone · Skin concern · Source
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- 02 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                02 · N8N
+            </div>
+
+            <h3>
+                Receive Webhook &amp; Validate Lead
+            </h3>
+
+            <p>
+                n8n receives the form submission and checks required
+                fields, email format and duplicate submissions before
+                continuing.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- VALIDATION -->
+
+        <div class="decision">
+
+            <div class="decision-card valid">
+
+                <span>
+                    Valid
+                </span>
+
+                <h4>
+                    Continue
+                </h4>
+
+                <p>
+                    Lead data passes validation and continues
+                    through the workflow.
+                </p>
+
+            </div>
+
+
+            <div class="decision-card recovery">
+
+                <span>
+                    Invalid
+                </span>
+
+                <h4>
+                    Recovery
+                </h4>
+
+                <p>
+                    Log the error and alert the team for
+                    manual review.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- 03 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                03 · CRM
+            </div>
+
+            <h3>
+                Create or Update Lead in Airtable
+            </h3>
+
+            <p>
+                Store contact details, concern, timestamp, source
+                and current lead status in one lightweight CRM record.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- 04 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                04 · TAG
+            </div>
+
+            <h3>
+                Tag the Lead
+            </h3>
+
+            <p>
+                Standard campaign and intent tags make reporting,
+                routing and follow-up easier for the team.
+            </p>
+
+            <div class="data">
+                Meta · Veya · Consultation
+            </div>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- 05 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                05 · TEAM ALERT
+            </div>
+
+            <h3>
+                Notify the Clinic Team
+            </h3>
+
+            <p>
+                Send a concise email or Slack notification containing
+                the lead name, concern and contact details.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- 06 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                06 · IMMEDIATE FOLLOW-UP
+            </div>
+
+            <h3>
+                Send a Warm Confirmation Message
+            </h3>
+
+            <p>
+                Thank the person for reaching out and provide a clear
+                consultation booking link without creating pressure.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- 07 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                07 · BOOKING
+            </div>
+
+            <h3>
+                Lead Chooses a Consultation Time
+            </h3>
+
+            <p>
+                The booking status is written back to the CRM and
+                the clinic team receives the appointment details.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <!-- OUTCOMES -->
+
+        <div class="outcomes">
+
+            <div class="outcome">
+
+                <h4>
+                    BOOKED
+                </h4>
+
+                <p>
+                    Update the lead status to
+                    <strong>Booked</strong> and stop automated reminders.
+                </p>
+
+            </div>
+
+
+            <div class="outcome">
+
+                <h4>
+                    NOT YET BOOKED
+                </h4>
+
+                <p>
+                    Send a gentle follow-up reminder and stop after
+                    a defined number of attempts.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HOW EACH STAGE WORKS
+========================= -->
+
+<section class="explanation-section">
+
+    <div class="explanation-inner">
+
+        <div class="section-label">
+            How each stage works
+        </div>
+
+        <h2 class="section-title">
+            Simple automation, human follow-up.
+        </h2>
+
+
+        <div class="explanation-grid">
+
+
+            <!-- 01 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    01
+                </div>
+
+                <h3>
+                    Capture
+                </h3>
+
+                <p>
+                    The landing page sends the completed form
+                    to an n8n webhook.
+                </p>
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    02
+                </div>
+
+                <h3>
+                    Validate
+                </h3>
+
+                <p>
+                    n8n checks required information before
+                    any CRM record is created.
+                </p>
+
+            </div>
+
+
+            <!-- 03 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    03
+                </div>
+
+                <h3>
+                    Store
+                </h3>
+
+                <p>
+                    Airtable acts as the lightweight lead record
+                    and status source.
+                </p>
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    04
+                </div>
+
+                <h3>
+                    Tag
+                </h3>
+
+                <p>
+                    Campaign and consultation tags make source
+                    and intent visible to the team.
+                </p>
+
+            </div>
+
+
+            <!-- 05 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    05
+                </div>
+
+                <h3>
+                    Alert
+                </h3>
+
+                <p>
+                    The clinic team gets a real-time notification
+                    so no enquiry is left unseen.
+                </p>
+
+            </div>
+
+
+            <!-- 06 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    06
+                </div>
+
+                <h3>
+                    Follow Up
+                </h3>
+
+                <p>
+                    A confirmation message gives the lead
+                    a clear next step without pressure.
+                </p>
+
+            </div>
+
+
+            <!-- 07 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    07
+                </div>
+
+                <h3>
+                    Book
+                </h3>
+
+                <p>
+                    Once a consultation is booked, the CRM
+                    status is updated automatically.
+                </p>
+
+            </div>
+
+
+            <!-- 08 -->
+
+            <div class="explanation-card">
+
+                <div class="num">
+                    08
+                </div>
+
+                <h3>
+                    Recover
+                </h3>
+
+                <p>
+                    Validation or delivery failures are logged
+                    and surfaced for manual action.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SUGGESTED STACK
+========================= -->
+
+<section class="stack-section">
+
+    <div class="section-label">
+        Suggested stack
+    </div>
+
+
+    <div class="stack-box">
+
+        <div class="stack-title">
+            Simple tools.<br>
+            Easy handover.
+        </div>
+
+
+        <div class="stack-list">
+
+            <div class="stack-item">
+                n8n
+            </div>
+
+            <div class="stack-item">
+                Airtable
+            </div>
+
+            <div class="stack-item">
+                Email / Slack
+            </div>
+
+            <div class="stack-item">
+                Booking Tool
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p class="stack-description">
+        Chosen because the workflow is easy to inspect, modify and
+        hand over to a small clinic team without unnecessary complexity.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     DESIGN PRINCIPLE
+========================= -->
+
+<section class="principle">
+
+    <div class="principle-inner">
+
+        <div class="principle-label">
+            Design principle
+        </div>
+
+        <h2>
+            Automate the admin.<br>
+            Keep the conversation human.
+        </h2>
+
+        <p>
+            The system handles capture, routing and reminders while
+            the clinic team owns the personal consultation.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        VEYA AESTHETIC CLINIC
+    </div>
+
+    <div>
+        AI Solutions Engineer · Practical Assessment · Task 03
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
